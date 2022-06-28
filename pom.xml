@@ -80,4 +80,12 @@
      <url>https://maven.pkg.github.com/odnman/calculator</url>
    </repository>
   </distributionManagement>
+
+  <servers>
+    <server>
+      <id>github</id>
+      <username>odnman</username>
+      <password>${env.PASS_TOKEN}</password>
+    </server>
+  </servers>
 </project>

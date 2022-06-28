@@ -1,5 +1,8 @@
 name: Publish Maven Calculator Package
 
+env:
+  PASS_TOKEN: ${{ secrets.PASS_TOKEN }}
+
 on:
   push:
     branches: [ main ]
@@ -13,5 +16,7 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+      - name: Set ENV
+        run:  export PASS_TOKEN=${PASS_TOKEN}
       - name: Deploy Package
         run : mvn deploy
