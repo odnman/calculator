@@ -18,7 +18,7 @@ jobs:
       packages: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3]
+        uses: actions/checkout@v3
       - name: Setup Maven Central Repository
         uses: actions/setup-java@v3
         with:
