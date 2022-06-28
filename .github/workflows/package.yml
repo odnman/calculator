@@ -11,12 +11,20 @@ on:
 
 
 jobs:
-  DeployMavenPackage:
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
-      - name: Set ENV
-        run:  export PASS_TOKEN=${PASS_TOKEN}
-      - name: Deploy Package
-        run : mvn deploy
+        uses: actions/checkout@v3]
+      - name: Setup Maven Central Repository
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Publish Package
+        run : mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
